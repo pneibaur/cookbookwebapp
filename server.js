@@ -5,12 +5,12 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const app = express();
 require("dotenv").config();
-const db = mongoose.connection;
-// Database
 const MONGODB_URI = process.env.MONGODB_URI;
+
 // Database config
 mongoose.connect(MONGODB_URI);
 // Error / Success messages
+const db = mongoose.connection;
 db.on("error", (error) => console.log(error.message + "is mongoose no running?"));
 db.on("connected", () => console.log("mongo connected"));
 db.on("disconnected", () => console.log("mongo disconnected"));
@@ -26,7 +26,7 @@ app.use(express.static("public")); // use public folder for static assets
 /////////////////////////
 // ROOT
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.render("index.ejs");
 });
 // INDEX
 
