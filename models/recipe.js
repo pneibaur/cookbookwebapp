@@ -7,6 +7,8 @@ const recipeSchema = new Schema({
     tags: Array,
     img: String,
     rating: Number,
+    isFavorite: Boolean,
+    tryLater: Boolean,
     notes: Array,
     ingredients: {type: Array, required: true},
     instructions: {type: Array, required: true}

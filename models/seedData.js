@@ -7,6 +7,8 @@ const seedData = [
         tags: ["dessert", "cookie"],
         img: "https://www.thereciperebel.com/wp-content/uploads/2015/09/chocolate-chip-cookies-TRR-1200-6-of-11-500x500.jpg",
         rating: 9,
+        isFavorite: true,
+        tryLater: false,
         notes: [
             "go slow with the flour! add until dough looks cakey, and not sticky",
             "for dark pans, decrease temp to 325 Deg. F.",
@@ -36,6 +38,8 @@ const seedData = [
         tags: ["easy", "savory", "mexican"],
         img: "https://bigoven-res.cloudinary.com/image/upload/t_recipe-1280/cornbread-pie-2.jpg",
         rating: 7,
+        isFavorite: false,
+        tryLater: true,
         notes: [
             "test the cornbread before pulling out the oven, to ensure its all the way cooked", 
             "You can use chunky tomatoes or blended canned tomatoes!"],

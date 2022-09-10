@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CookBook | Favorites</title>
+    <%- include("../partials/head.ejs") %>
 </head>
 <body>
     <nav>
-        <a href="/">Home</a>
-        <a href="/recipes">All Recipes</a>
-        <a href="/trylater">Try Later</a>
-        <a href="/favorites">Favorites</a>
+        <%- include("../partials/nav.ejs") %>
     </nav>
     <h1>Favorite Recipes Index Page</h1>
+    <main>
+        <a href="/recipes/new">Add a new recipe</a>
+        <ul>
+            <% for (i=0; i<favorites.length; i++){%>
+                <li><a href="/recipes/<%=favorites[i]._id%>"> <%=favorites[i].title%> </a></li>
+            <% } %> 
+        </ul>
+    </main>
 </body>
 </html>

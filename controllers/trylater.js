@@ -6,9 +6,10 @@ const Later = require("../models/recipe.js")
 
 ////////////////////// ROUTES
 laterRouter.get("/", (req, res)=>{
-    Later.find({}, (error, foundLater)=>{
+    Later.find({tryLater:true}, (error, foundLater)=>{
         res.render("tryLater/index.ejs", {
-            tryLater: foundLater
+            tryLater: foundLater,
+            tabTitle: "Saved 4 Later"
         })
     })
 })
