@@ -4,22 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CookBook | all</title>
+    <title>CookBook | Favorites</title>
 </head>
 <body>
     <nav>
         <a href="/">Home</a>
         <a href="/recipes">All Recipes</a>
+        <a href="/trylater">Try Later</a>
         <a href="/favorites">Favorites</a>
-        <a href="/tryLater">Try Later</a>
     </nav>
-    <main>
-        <h1>All Recipes Index Page</h1>
-        <ul>
-            <% for (i=0; i<allRecipes.length; i++){%>
-                <li><a href="/recipes/<%=allRecipes[i]._id%>"> <%=allRecipes[i].title%> </a></li>
-            <% } %> 
-        </ul>
-    </main>
+    <h1>Favorite Recipes Index Page</h1>
 </body>
 </html>

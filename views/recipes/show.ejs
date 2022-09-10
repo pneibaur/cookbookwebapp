@@ -7,6 +7,52 @@
     <title>CookBook | Show</title>
 </head>
 <body>
-    <h1><%= showRecipe.title %> </h1>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/recipes">All Recipes</a>
+            <a href="/favorites">Favorites</a>
+            <a href="/trylater">Try Later</a>
+        </nav>
+        <h1><%= showRecipe.title %> </h1>
+    </header>
+    <main>
+        <p><%=showRecipe.description %> </p>
+        <p>
+            <% if (showRecipe.tags.length > 0){ %>
+                Tags: <%= showRecipe.tags.join(", ") %> 
+            <% } else { %>
+                This Recipe has no tags.
+            <% } %> 
+        </p>
+        <p>Rating: <%=showRecipe.rating%>/10 </p>
+        <img src="<%=showRecipe.img%>" alt="<%= showRecipe.title %>" style="max-width: 100px; max-height: auto;">
+        <p>
+            <h3> Saved Notes: </h3>
+            <ul>
+                <% if (showRecipe.notes.length > 0){ %>
+                    <% showRecipe.notes.forEach(note => { %>
+                       <li><%= note %> </li> 
+                    <% }); %>
+                <% } else { %>
+                    no notes
+                <% }%> 
+            </ul>
+        </p>
+        <p> <h3>Ingredients: </h3>
+            <ul>
+                <% showRecipe.ingredients.forEach(ingredient => { %>
+                    <li><%= ingredient %> </li>
+                <% }) %> 
+            </ul>
+        </p>
+        <p> <h3>Instructions: </h3>
+            <ul>
+                <% showRecipe.instructions.forEach(item => { %>
+                    <li><%= item %> </li>
+                <% }) %> 
+            </ul>
+        </p>
+    </main>
 </body>
 </html>
