@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CookBook | New</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/recipes">All Recipes</a>
+            <a href="/favorites">Favorites</a>
+            <a href="/trylater">Try Later</a>
+        </nav>
+        <h1>New Recipe Form</h1>
+    </header>
+    <main>
+        <form action="/recipes" method="POST">
+            <label for="title">Recipe Title: </label><br>
+            <input type="text" name="title" id="title"><br><br>
+
+            <label for="tags">Use tags to sort this recipe</label><br>
+            <input type="text" name="tags" id="tags"><br><br>
+
+            <label for="description">Give a description for your recipe: </label><br>
+            <textarea name="description" id="description" cols="30" rows="10"></textarea><br>
+
+            <label for="img">Got an image link?</label><br>
+            <input type="text" name="img" id="img"><br><br>
+
+            <label for="rating">Rate your recipe!</label><br>
+            <input type="number" name="rating" id="rating" placeholder="out of 10"><br><br>
+
+            <label for="ingredients">List your ingredients</label><br>
+            <textarea name="ingredients" id="ingredients" cols="30" rows="10" placeholder="separate items with commas. e.g. 2 eggs, 1/2 C Sugar, etc..."></textarea><br><br>
+
+            <label for="instructions">List your instructions.</label><br>
+            <textarea name="instructions" id="instructions" cols="30" rows="10" placeholder="separate steps with periods. e.g. mix together in a large bowl. in a separate container, combine wet ingredients. etc..."></textarea><br><br>
+
+            <input type="submit" value="Add New Recipe!">
+        </form>
+    </main>
+</body>
+</html>

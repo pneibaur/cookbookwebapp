@@ -18,6 +18,10 @@
     </header>
     <main>
         <p><%=showRecipe.description %> </p>
+        <form action="/recipes/<%=showRecipe._id%>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete Recipe">
+        </form>
+        <button><a href="/recipes/<%=showRecipe._id%>/edit">Edit Recipe</a></button>
         <p>
             <% if (showRecipe.tags.length > 0){ %>
                 Tags: <%= showRecipe.tags.join(", ") %> 

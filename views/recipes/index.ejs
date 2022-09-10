@@ -15,6 +15,7 @@
     </nav>
     <main>
         <h1>All Recipes Index Page</h1>
+        <a href="/recipes/new">Add a new recipe</a>
         <ul>
             <% for (i=0; i<allRecipes.length; i++){%>
                 <li><a href="/recipes/<%=allRecipes[i]._id%>"> <%=allRecipes[i].title%> </a></li>
