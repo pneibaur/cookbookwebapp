@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CookBook | all</title>
+    <%- include("../partials/head.ejs") %> 
 </head>
 <body>
     <nav>
-        <a href="/">Home</a>
-        <a href="/recipes">All Recipes</a>
-        <a href="/favorites">Favorites</a>
-        <a href="/tryLater">Try Later</a>
+        <%- include("../partials/nav.ejs") %>
     </nav>
     <main>
         <h1>All Recipes Index Page</h1>

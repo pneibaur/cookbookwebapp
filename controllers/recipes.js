@@ -14,13 +14,16 @@ recipeRouter.get("/seed", (req, res)=>{
 recipeRouter.get("/", (req, res)=>{
     Recipes.find({}, (error, foundRecipes)=>{
         res.render("recipes/index.ejs", {
-            allRecipes: foundRecipes
+            allRecipes: foundRecipes,
+            tabTitle: "All"
         })
     })
 })
 //  New
 recipeRouter.get("/new", (req, res)=>{
-    res.render("recipes/new.ejs")
+    res.render("recipes/new.ejs", {
+        tabTitle: "New Recipe"
+    })
 })
 // Destroy
 recipeRouter.delete("/:id", (req, res)=>{
@@ -72,7 +75,8 @@ recipeRouter.post("/", (req, res)=>{
 recipeRouter.get("/:id/edit", (req, res)=>{
     Recipes.findById(req.params.id, (error, foundRecipe)=>{
         res.render("recipes/edit.ejs", {
-            editRecipe: foundRecipe
+            editRecipe: foundRecipe,
+            tabTitle: "Edit"
         })
     })
 })
@@ -80,7 +84,8 @@ recipeRouter.get("/:id/edit", (req, res)=>{
 recipeRouter.get("/:id", (req, res)=>{
     Recipes.findById(req.params.id, (error, foundRecipe)=>{
         res.render("recipes/show.ejs", {
-            showRecipe: foundRecipe
+            showRecipe: foundRecipe,
+            tabTitle: foundRecipe.title
         })
     })
 })
