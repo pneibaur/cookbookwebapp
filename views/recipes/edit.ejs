@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CookBook | Edit</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/recipes">All Recipes</a>
+            <a href="/favorites">Favorites</a>
+            <a href="/trylater">Try Later</a>
+        </nav>
+        <h1>Edit <%= editRecipe.title %> </h1>
+    </header>
+    <main>
+        <form action="/recipes/<%=editRecipe._id%>?_method=PUT" method="POST">
+            <label for="title">Recipe Title: </label><br>
+            <input type="text" name="title" id="title" value="<%=editRecipe.title%>"><br><br>
+
+            <label for="tags">Edit tags:</label><br>
+            <input type="text" name="tags" id="tags" placeholder="use , to separate tags" value="<%=editRecipe.tags.join(", ")%>"><br><br>
+
+            <label for="description">Give a description for your recipe: </label><br>
+            <textarea name="description" id="description" cols="30" rows="10"><%=editRecipe.description%></textarea><br>
+
+            <label for="img">Update image link:</label><br>
+            <input type="text" name="img" id="img" value="<%=editRecipe.img%>"><br><br>
+
+            <label for="rating">Update your rating:</label><br>
+            <input type="number" name="rating" id="rating" placeholder="out of 10" value="<%=editRecipe.rating%>"><br><br>
+
+            <label for="ingredients">Update ingredients:</label><br>
+            <textarea name="ingredients" id="ingredients" cols="30" rows="10" placeholder="separate items with periods. e.g. 2 eggs. 1/2 C Sugar. etc..."><%=editRecipe.ingredients.join(". ")%></textarea><br><br>
+
+            <label for="instructions">Update instructions:</label><br>
+            <textarea name="instructions" id="instructions" cols="30" rows="10" placeholder="separate steps with periods. e.g. mix together in a large bowl. in a separate container, combine wet ingredients. etc..."><%=editRecipe.instructions.join(". ")%></textarea><br><br>
+
+            <label for="notes">Any additional notes to add?</label><br>
+            <textarea name="notes" id="notes" cols="30" rows="10" placeholder="separate steps with periods."><%=editRecipe.notes.join(". ")%></textarea><br><br>
+
+            <input type="submit" value="Update Recipe!">
+        </form>
+    </main>
+</body>
+</html>
