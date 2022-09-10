@@ -33,16 +33,6 @@ app.get("/", (req, res) => {
     res.render("index.ejs");
 });
 
-// NEW
-
-// UPDATE
-
-// CREATE
-
-// EDIT
-
-// SHOW
-
 //////// LISTENER
 /////////////////////////
 const PORT = process.env.PORT || 3000;
