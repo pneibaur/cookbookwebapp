@@ -12,7 +12,7 @@ const recipeSchema = new Schema({
     notes: Array,
     ingredients: {type: Array, required: true},
     instructions: {type: Array, required: true}
-})
+}, {timestamps: true})
 
 const Recipe = mongoose.model("Recipe", recipeSchema)
 
