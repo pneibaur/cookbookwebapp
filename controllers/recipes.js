@@ -55,6 +55,24 @@ recipeRouter.put("/:id", (req, res)=>{
         res.redirect(`/recipes/${req.params.id}`)
     })
 })
+// adds item to favorites
+recipeRouter.put("/:id/addFav", (req, res)=>{
+    Recipes.findByIdAndUpdate(req.params.id, req.body, {new:true}, (error, currentRecipe)=>{
+        if (currentRecipe.isFavorite === true){currentRecipe.isFavorite = false}
+        else {currentRecipe.isFavorite = true}
+        currentRecipe.save()
+        res.redirect(`/recipes/${req.params.id}`)
+    })
+})
+// adds recipe to "try later"
+recipeRouter.put("/:id/trylater", (req, res)=>{
+    Recipes.findByIdAndUpdate(req.params.id, req.body, {new:true}, (error, currentRecipe)=>{
+        if (currentRecipe.tryLater === true){currentRecipe.tryLater = false}
+        else {currentRecipe.tryLater = true}
+        currentRecipe.save()
+        res.redirect(`/recipes/${req.params.id}`)
+    })
+})
 // Create
 recipeRouter.post("/", (req, res)=>{
     if (req.body.isFavorite === "on"){req.body.isFavorite = true}

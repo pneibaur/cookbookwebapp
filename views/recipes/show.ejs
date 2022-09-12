@@ -16,6 +16,20 @@
             <input type="submit" value="Delete Recipe">
         </form>
         <button><a href="/recipes/<%=showRecipe._id%>/edit">Edit Recipe</a></button>
+        <form action="/recipes/<%=showRecipe._id%>/addFav?_method=PUT" method="POST">
+            <% if (showRecipe.isFavorite === true){ %>
+                <input type="submit" value="Remove from Favorites">
+            <% } else { %>
+                <input type="submit" value="Add to Favorites">
+            <% } %> 
+        </form>
+        <form action="/recipes/<%=showRecipe._id%>/trylater?_method=PUT" method="POST">
+            <% if (showRecipe.tryLater === true){ %>
+                <input type="submit" value="Remove from 'try later'">
+            <% } else { %>
+                <input type="submit" value="Add to 'try later'">
+            <% } %> 
+        </form>
         <p>
             <% if (showRecipe.tags.length > 0){ %>
                 Tags: <%= showRecipe.tags.join(", ") %> 
