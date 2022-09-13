@@ -1,23 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CookBook</title>
+    <%- include("./partials/head.ejs") %>
 </head>
-<body>
-    <header>
-        <nav>
-            <a href="/">Home</a>
-        </nav>
-        <h1>CookBook</h1>
-        <h3>Save what you love</h3>
-    </header>
-    <main>
-        <a href="/recipes">All recipes</a>
-        <a href="/favorites">favorites</a>
-        <a href="/trylater">Try later</a>
-    </main>
+
+<body class="yellow lighten-5">
+    <div class="container">
+        <header>
+            <nav class="row lime">
+                <div class="nav-wrapper col s12">
+                    <ul class="left">
+                        <li><i class="material-icons">local_cafe</i></li>
+                        <li><a href="/new">Add New</a></li>
+                        <li><a href="/">Home</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="row">
+                <h1 class="col s12 center-align grey-text text-darken-2">CookBook</h1>
+                <h5 class="col s12 center-align grey-text">Save what you love</h5>
+            </div>
+        </header>
+        <div class="divider"></div>
+        <main>
+            <div class="section row">
+                <!-- recipe box card -->
+                <div class="col s12 m6 l4 center-align">
+                    <div class="card z-depth-3 hoverable">
+                        <div class="card-image">
+                            <img src="https://i.imgur.com/cTpQ0yr.jpg" alt="Recipe Box">
+                        </div>
+                        <div class="card-action orange accent-2">
+                            <a class="white-text waves-effect waves-light" href="/recipes">All Recipes</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Favorites box card -->
+                <div class="col s12 m6 l4 center-align">
+                    <div class="card z-depth-3 hoverable">
+                        <div class="card-image">
+                            <img src="https://i.imgur.com/qykwqsW.jpg" alt="Pie">
+                        </div>
+                        <div class="card-action orange accent-2">
+                            <a class="white-text waves-effect waves-light" href="/favorites">Favorites</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Try Later Box Card -->
+                <div class="col s12 m6 l4 center-align">
+                    <div class="card z-depth-3 hoverable">
+                        <div class="card-image">
+                            <img src="https://i.imgur.com/LJ2pbHc.jpg" alt="Meal Prep">
+                        </div>
+                        <div class="card-action orange accent-2">
+                            <a class="white-text waves-effect waves-light" href="/trylater">Try Later</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
 </body>
+
 </html>

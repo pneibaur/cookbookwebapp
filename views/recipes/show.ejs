@@ -1,75 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include("../partials/head.ejs") %>
 </head>
-<body>
-    <header>
-        <nav>
-            <%- include("../partials/nav.ejs") %>
-        </nav>
-        <h1><%= showRecipe.title %> </h1>
-    </header>
-    <main>
-        <p><%=showRecipe.description %> </p>
-        <form action="/recipes/<%=showRecipe._id%>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete Recipe">
-        </form>
-        <button><a href="/recipes/<%=showRecipe._id%>/edit">Edit Recipe</a></button>
-        <form action="/recipes/<%=showRecipe._id%>/addFav?_method=PUT" method="POST">
-            <% if (showRecipe.isFavorite === true){ %>
-                <input type="submit" value="Remove from Favorites">
-            <% } else { %>
-                <input type="submit" value="Add to Favorites">
-            <% } %> 
-        </form>
-        <form action="/recipes/<%=showRecipe._id%>/trylater?_method=PUT" method="POST">
-            <% if (showRecipe.tryLater === true){ %>
-                <input type="submit" value="Remove from 'try later'">
-            <% } else { %>
-                <input type="submit" value="Add to 'try later'">
-            <% } %> 
-        </form>
-        <p>
-            <% if (showRecipe.tags.length > 0){ %>
-                Tags: <%= showRecipe.tags.join(", ") %> 
-            <% } else { %>
-                This Recipe has no tags.
-            <% } %> 
-        </p>
-        <p>Rating: <%=showRecipe.rating%>/10 </p>
-        <img src="<%=showRecipe.img%>" alt="<%= showRecipe.title %>" style="max-width: 100px; max-height: auto;">
-        <p>
+
+<body class="yellow lighten-5">
+    <div class="container">
+        <header>
+            <nav class="row lime">
+                <%- include("../partials/nav.ejs") %>
+            </nav>
+        </header>
+        <main>
+            <div class="section">
+                <h1 class="grey-text text-darken-2">
+                    <%= showRecipe.title %>
+                </h1>
+                <h5 class="grey-text text-darken-2">
+                    <%=showRecipe.description %>
+                </h5>
+                <p class="grey-text text-darken-2">
+                    <% if (showRecipe.tags.length> 0){ %>
+                        Tags: <%= showRecipe.tags.join(", ") %> 
+                    <% } else { %>
+                        This Recipe has no tags.
+                    <% } %> 
+                </p>
+            </div>
+            <div class=" divider">
+            </div>
+            <div class="section">
+                <div class="row">
+                    <div class="col s3 input-field center-align">
+                        <a class="btn orange white-text" href="/recipes/<%=showRecipe._id%>/edit"><i class="material-icons">edit</i> Edit</a>
+                    </div>
+                    <div class="col s3 input-field center-align">
+                        <form action="/recipes/<%=showRecipe._id%>?_method=DELETE" method="POST">
+                            <button class="orange btn" type="submit"><i class="material-icons">delete_forever</i> Delete</button>
+                        </form>
+                    </div>
+                    <div class="col s3 input-field center-align">
+                        <form action="/recipes/<%=showRecipe._id%>/addFav?_method=PUT" method="POST">
+                            <% if (showRecipe.isFavorite===true){ %>
+                                <button class="btn lime white-text" type="submit"><i class="material-icons">remove_circle</i> favorites</button>
+                            <% } else { %>
+                                <button class="btn lime white-text" type="submit"><i class="material-icons">add_circle</i> favorites</button>
+                            <% } %>
+                        </form>
+                    </div>
+                    <div class="col s3 input-field center-align">
+                        <form action="/recipes/<%=showRecipe._id%>/trylater?_method=PUT" method="POST">
+                            <% if (showRecipe.tryLater===true){ %>
+                                <button class="btn lime white-text" type="submit"><i class="material-icons">remove_circle</i> try later</button>
+                            <% } else { %>
+                                <button class="btn lime white-text" type="submit"><i class="material-icons">add_circle</i> try later</button>
+                            <% } %>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <p>Rating: <%=showRecipe.rating%>/10 </p>
+            <img src=" <%=showRecipe.img%>" alt="<%= showRecipe.title %>" style="max-width:
+                            100px; max-height: auto;">
+            <p>
             <h3> Saved Notes: </h3>
             <ul>
-                <% if (showRecipe.notes.length > 0){ %>
-                    <% showRecipe.notes.forEach(note => { %>
-                       <li><%= note %> </li> 
-                    <% }); %>
-                <% } else { %>
-                    no notes
-                <% }%> 
+                <% if (showRecipe.notes.length> 0){ %>
+                    <% showRecipe.notes.forEach(note=> { %>
+                        <li>
+                            <%= note %>
+                        </li>
+                        <% }); %>
+                            <% } else { %>
+                                no notes
+                                <% }%>
             </ul>
-        </p>
-        <p> <h3>Ingredients: </h3>
+            </p>
+            <p>
+            <h3>Ingredients: </h3>
             <ul>
-                <% showRecipe.ingredients.forEach(ingredient => { %>
-                    <li><%= ingredient %> </li>
-                <% }) %> 
+                <% showRecipe.ingredients.forEach(ingredient=> { %>
+                    <li>
+                        <%= ingredient %>
+                    </li>
+                    <% }) %>
             </ul>
-        </p>
-        <p> <h3>Instructions: </h3>
+            </p>
+            <p>
+            <h3>Instructions: </h3>
             <ul>
-                <% showRecipe.instructions.forEach(item => { %>
-                    <li><%= item %> </li>
-                <% }) %> 
+                <% showRecipe.instructions.forEach(item=> { %>
+                    <li>
+                        <%= item %>
+                    </li>
+                    <% }) %>
             </ul>
-        </p>
-    </main>
-    <footer>
-        <p>
-            Recipe created on: <%= showRecipe.createdAt %> 
-        </p>
-    </footer>
+            </p>
+        </main>
+        <footer>
+            <p>
+                Recipe created on: <%= showRecipe.createdAt %>
+            </p>
+        </footer>
+    </div>
 </body>
+
 </html>

@@ -34,7 +34,9 @@ app.use("/trylater", laterController)
 /////////////////////////
 // INDEX ------ welcome page. has options for main index, favorites, or tryLater. 
 app.get("/", (req, res) => {
-    res.render("index.ejs")
+    res.render("index.ejs", {
+        tabTitle: "Main"
+    })
 });
 
 //////// LISTENER

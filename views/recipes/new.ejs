@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include("../partials/head.ejs") %>
 </head>
+
 <body>
     <header>
         <nav>
@@ -34,16 +36,20 @@
             <input type="number" name="rating" id="rating" placeholder="out of 10"><br><br>
 
             <label for="ingredients">List your ingredients</label><br>
-            <textarea name="ingredients" id="ingredients" cols="30" rows="10" placeholder="separate items with periods. e.g. 2 eggs. 1/2 C Sugar. etc..."></textarea><br><br>
+            <textarea name="ingredients" id="ingredients" cols="30" rows="10"
+                placeholder="separate items with periods. e.g. 2 eggs. 1/2 C Sugar. etc..."></textarea><br><br>
 
             <label for="instructions">List your instructions.</label><br>
-            <textarea name="instructions" id="instructions" cols="30" rows="10" placeholder="separate steps with periods. e.g. mix together in a large bowl. in a separate container, combine wet ingredients. etc..."></textarea><br><br>
+            <textarea name="instructions" id="instructions" cols="30" rows="10"
+                placeholder="separate steps with periods. e.g. mix together in a large bowl. in a separate container, combine wet ingredients. etc..."></textarea><br><br>
 
             <label for="notes">Any additional notes to add?</label><br>
-            <textarea name="notes" id="notes" cols="30" rows="10" placeholder="separate steps with periods."></textarea><br><br>
+            <textarea name="notes" id="notes" cols="30" rows="10"
+                placeholder="separate steps with periods."></textarea><br><br>
 
             <input type="submit" value="Add New Recipe!">
         </form>
     </main>
 </body>
+
 </html>
