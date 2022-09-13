@@ -40,6 +40,11 @@
                                         rows="10"><%=editRecipe.description%>
                                     </textarea>
                             </div>
+                            <!-- EXTERNAL LINK -->
+                            <div class="input-field">
+                                <label for="link">Edit link?</label>
+                                <input type="text" name="link" id="link" value="<%=editRecipe.link%>">
+                            </div>
                             <!-- IMAGE LINK -->
                             <div class="input-field">
                                 <label for="img">Update image link:</label>
@@ -96,10 +101,10 @@
                     </div>
                     <div class="row">
                         <div class="col s3">
-                            <button class="btn lime hoverable" type="submit">Update Recipe!</button>
+                            <button class="btn lime hoverable" type="submit"><i class="material-icons left">local_dining</i>Update</button>
                         </div>
                         <div class="col s3">
-                            <a class="btn orange hoverable" href="/recipes/<%=editRecipe._id%>">Cancel Edits</a>
+                            <a class="btn orange hoverable" href="/recipes/<%=editRecipe._id%>"><i class="material-icons left">delete</i>Cancel</a>
                         </div>
                     </div>
                 </form>

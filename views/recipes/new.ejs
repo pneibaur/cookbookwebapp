@@ -30,7 +30,7 @@
                             <input type="text" name="tags" id="tags" placeholder="use , to separate tags">
                         </div>
                     </div>
-                    <!-- DESCRIPTION AND IMG LINK -->
+                    <!-- DESCRIPTION -->
                     <div class="row">
                         <div class="col s12 m8">
                             <div class="input-field">
@@ -38,6 +38,12 @@
                                 <textarea class="materialize-textarea" name="description" id="description"
                                     placeholder="Give a description for your recipe!"></textarea>
                             </div>
+                            <!-- EXTERNAL LINK -->
+                            <div class="input-field">
+                                <label for="link">Link an external recipe</label>
+                                <input type="text" name="link" id="link">
+                            </div>
+                            <!-- IMAGE LINK -->
                             <div class="input-field">
                                 <label for="img">Got an image link?</label>
                                 <input type="text" name="img" id="img">
@@ -52,7 +58,7 @@
                                         <input type="checkbox" name="isFavorite">
                                         <span class="grey-text text-darken-2"> Mark this as a favorite: </span>
                                     </label>
-                                    <label for="tryLater">
+                                    <label>
                                         <input type="checkbox" name="tryLater">
                                         <span class="grey-text text-darken-2"> Mark to try later?</span>
                                     </label>
@@ -91,7 +97,14 @@
                             </div>
                         </div>
                         <!-- SUBMIT -->
-                        <button class="btn large lime" type="submit"><i class="material-icons left">local_dining</i> Add New Recipe!</button>
+                        <div class="row">
+                            <div class="col s3">
+                                <button class="btn lime hoverable" type="submit"><i class="material-icons left">local_dining</i>Add new</button>
+                            </div>
+                            <div class="col s3">
+                                <a class="btn orange hoverable" href="/recipes"><i class="material-icons left">delete</i>Cancel</a>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>

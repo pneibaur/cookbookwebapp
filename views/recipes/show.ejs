@@ -54,7 +54,7 @@
                     <div class="col s6 m3 l3 input-field center-align">
                         <form action="/recipes/<%=showRecipe._id%>/addFav?_method=PUT" method="POST">
                             <% if (showRecipe.isFavorite===true){ %>
-                                <button class="hoverable btn lime white-text" type="submit"><i
+                                <button class="hoverable btn orange white-text" type="submit"><i
                                         class="material-icons left">remove_circle</i> favorites</button>
                                 <% } else { %>
                                     <button class="hoverable btn lime white-text" type="submit"><i
@@ -66,12 +66,12 @@
                     <div class="col s6 m3 l3 input-field center-align">
                         <form action="/recipes/<%=showRecipe._id%>/trylater?_method=PUT" method="POST">
                             <% if (showRecipe.tryLater===true){ %>
-                                <button class="hoverable btn lime white-text" type="submit"><i
+                                <button class="hoverable btn orange white-text" type="submit"><i
                                         class="material-icons left">remove_circle</i> try later</button>
                                 <% } else { %>
                                     <button class="hoverable btn lime white-text" type="submit"><i
                                             class="material-icons left">add_circle</i> try later</button>
-                                    <% } %>
+                                <% } %>
                         </form>
                     </div>
                 </div>
@@ -80,7 +80,17 @@
             <!-- RECIPE CONTENT -->
             <div class="section row">
                 <!-- RESPONSIVE IMAGE -->
-                <img class="col s12 responsive-img" src=" <%=showRecipe.img%>" alt="<%= showRecipe.title %>">
+                <div class="col s12">
+                    <img class="col s12 responsive-img" src=" <%=showRecipe.img%>" alt="<%= showRecipe.title %>">
+                </div>
+                <div class="col s12">
+                    <div class="card hoverable z-depth-2 yellow lighten-5">
+                        <div class="card-content">
+                            <h5 class="card-title grey-text text-darken-2">Recipe Link:</h5>
+                            <a href="<%=showRecipe.link%>"><h6><%=showRecipe.link%></h6></a>
+                        </div>
+                    </div>
+                </div>
                 <!-- REICPE NOTES -->
                 <div class="col s12 m6 l6 right">
                     <div class="card z-depth-2 yellow lighten-5">
@@ -94,13 +104,12 @@
                                             <%= note %>
                                         </li><br>
                                         <% }); %>
-                                            <% } else { %>
-                                                no notes
-                                                <% }%>
+                                <% } else { %>
+                                    no notes
+                                <% }%>
                             </ul>
                         </div>
                     </div>
-
                 </div>
                 <!-- INGREDIENTS LIST -->
                 <div class="col s12 m6 l6 left">
