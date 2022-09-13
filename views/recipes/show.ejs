@@ -13,96 +13,136 @@
             </nav>
         </header>
         <main>
-            <div class="section">
-                <h1 class="grey-text text-darken-2">
+            <!-- *add a row and some columns for this seciton -->
+            <div class="section row">
+                <!-- RECIPE TITLE -->
+                <h1 class="col s12 grey-text text-darken-2 center-align">
                     <%= showRecipe.title %>
                 </h1>
-                <h5 class="grey-text text-darken-2">
+                <!-- DESCRIPTION -->
+                <h5 class="col s12 grey-text text-darken-2 center-align">
                     <%=showRecipe.description %>
                 </h5>
-                <p class="grey-text text-darken-2">
+                <!-- RECIPE TAGS -->
+                <h5 class="col s9 left grey-text text-darken-2">
                     <% if (showRecipe.tags.length> 0){ %>
                         Tags: <%= showRecipe.tags.join(", ") %> 
                     <% } else { %>
                         This Recipe has no tags.
                     <% } %> 
-                </p>
+                    </h5>
+                <h5 class="col s3 grey-text text-darken-2">Rating: <%=showRecipe.rating%>/10 </h5>
             </div>
             <div class=" divider">
             </div>
+            <!-- BUTTONS SECTION -->
             <div class="section">
                 <div class="row">
-                    <div class="col s3 input-field center-align">
-                        <a class="btn orange white-text" href="/recipes/<%=showRecipe._id%>/edit"><i class="material-icons">edit</i> Edit</a>
+                    <!-- EDIT -->
+                    <div class="col s6 m3 l3 input-field center-align">
+                        <a class="hoverable btn orange white-text" href="/recipes/<%=showRecipe._id%>/edit"><i
+                                class="material-icons left">edit</i> Edit</a>
                     </div>
-                    <div class="col s3 input-field center-align">
+                    <!-- DELETE -->
+                    <div class="col s6 m3 l3 input-field center-align">
                         <form action="/recipes/<%=showRecipe._id%>?_method=DELETE" method="POST">
-                            <button class="orange btn" type="submit"><i class="material-icons">delete_forever</i> Delete</button>
+                            <button class="hoverable orange btn" type="submit"><i
+                                    class="material-icons left">delete_forever</i> Delete</button>
                         </form>
                     </div>
-                    <div class="col s3 input-field center-align">
+                    <!-- ADD/REMOVE FROM FAVS -->
+                    <div class="col s6 m3 l3 input-field center-align">
                         <form action="/recipes/<%=showRecipe._id%>/addFav?_method=PUT" method="POST">
                             <% if (showRecipe.isFavorite===true){ %>
-                                <button class="btn lime white-text" type="submit"><i class="material-icons">remove_circle</i> favorites</button>
-                            <% } else { %>
-                                <button class="btn lime white-text" type="submit"><i class="material-icons">add_circle</i> favorites</button>
-                            <% } %>
+                                <button class="hoverable btn lime white-text" type="submit"><i
+                                        class="material-icons left">remove_circle</i> favorites</button>
+                                <% } else { %>
+                                    <button class="hoverable btn lime white-text" type="submit"><i
+                                            class="material-icons left">add_circle</i> favorites</button>
+                                    <% } %>
                         </form>
                     </div>
-                    <div class="col s3 input-field center-align">
+                    <!-- ADD/REMOVE FROM TRY LATER -->
+                    <div class="col s6 m3 l3 input-field center-align">
                         <form action="/recipes/<%=showRecipe._id%>/trylater?_method=PUT" method="POST">
                             <% if (showRecipe.tryLater===true){ %>
-                                <button class="btn lime white-text" type="submit"><i class="material-icons">remove_circle</i> try later</button>
-                            <% } else { %>
-                                <button class="btn lime white-text" type="submit"><i class="material-icons">add_circle</i> try later</button>
-                            <% } %>
+                                <button class="hoverable btn lime white-text" type="submit"><i
+                                        class="material-icons left">remove_circle</i> try later</button>
+                                <% } else { %>
+                                    <button class="hoverable btn lime white-text" type="submit"><i
+                                            class="material-icons left">add_circle</i> try later</button>
+                                    <% } %>
                         </form>
                     </div>
                 </div>
             </div>
             <div class="divider"></div>
-            <p>Rating: <%=showRecipe.rating%>/10 </p>
-            <img src=" <%=showRecipe.img%>" alt="<%= showRecipe.title %>" style="max-width:
-                            100px; max-height: auto;">
-            <p>
-            <h3> Saved Notes: </h3>
-            <ul>
-                <% if (showRecipe.notes.length> 0){ %>
-                    <% showRecipe.notes.forEach(note=> { %>
-                        <li>
-                            <%= note %>
-                        </li>
-                        <% }); %>
-                            <% } else { %>
-                                no notes
-                                <% }%>
-            </ul>
-            </p>
-            <p>
-            <h3>Ingredients: </h3>
-            <ul>
-                <% showRecipe.ingredients.forEach(ingredient=> { %>
-                    <li>
-                        <%= ingredient %>
-                    </li>
-                    <% }) %>
-            </ul>
-            </p>
-            <p>
-            <h3>Instructions: </h3>
-            <ul>
-                <% showRecipe.instructions.forEach(item=> { %>
-                    <li>
-                        <%= item %>
-                    </li>
-                    <% }) %>
-            </ul>
-            </p>
+            <!-- RECIPE CONTENT -->
+            <div class="section row">
+                <!-- RESPONSIVE IMAGE -->
+                <img class="col s12 responsive-img" src=" <%=showRecipe.img%>" alt="<%= showRecipe.title %>">
+                <!-- REICPE NOTES -->
+                <div class="col s12 m6 l6 right">
+                    <div class="card z-depth-2 yellow lighten-5">
+                        <div class="card-content">
+                            <h3 class="grey-text text-darken-2"> Saved Notes: </h3>
+                            <ul>
+                                <% if (showRecipe.notes.length> 0){ %>
+                                    <% showRecipe.notes.forEach(note=> { %>
+                                        <li class="grey-text text-darken-2 flow-text">
+                                            <i class="material-icons">label</i>
+                                            <%= note %>
+                                        </li><br>
+                                        <% }); %>
+                                            <% } else { %>
+                                                no notes
+                                                <% }%>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- INGREDIENTS LIST -->
+                <div class="col s12 m6 l6 left">
+                    <div class="card z-depth-2 yellow lighten-5">
+                        <div class="card-content">
+                            <h3 class="grey-text text-darken-2">Ingredients: </h3>
+                            <ul>
+                                <% showRecipe.ingredients.forEach(ingredient=> { %>
+                                    <li class="grey-text text-darken-2 flow-text">
+                                        <%= ingredient %>
+                                    </li>
+                                    <% }) %>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- INSTRUCTIONS LIST -->
+                <div class="col s12">
+                    <div class="card z-depth-2 yellow lighten-5">
+                        <div class="card-content">
+                            <h3 class="grey-text text-darken-2">Instructions: </h3>
+                            <ol>
+                                <% showRecipe.instructions.forEach(item=> { %>
+                                    <li class="grey-text text-darken-2 flow-text">
+                                        <%= item %>
+                                    </li>
+                                    <% }) %>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
-        <footer>
-            <p>
-                Recipe created on: <%= showRecipe.createdAt %>
-            </p>
+        <!-- CREATED/EDITED FOOTER -->
+        <footer class="lime darken-1 page-footer valign-wrapper">
+            <div class="row center-align">
+                <p class="col s6">CREATED: <%= showRecipe.createdAt %>
+                </p>
+                <p class="col s6">EDITED: <%= showRecipe.updatedAt %>
+                </p>
+            </div>
         </footer>
     </div>
 </body>

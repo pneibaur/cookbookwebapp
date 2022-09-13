@@ -6,50 +6,97 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <%- include("../partials/nav.ejs") %>
-        </nav>
-        <h1>New Recipe Form</h1>
-    </header>
-    <main>
-        <form action="/recipes" method="POST">
-            <label for="title">Recipe Title: </label><br>
-            <input type="text" name="title" id="title"><br><br>
-
-            <label for="tags">Use tags to sort this recipe</label><br>
-            <input type="text" name="tags" id="tags" placeholder="use , to separate tags"><br><br>
-
-            <label for="description">Give a description for your recipe: </label><br>
-            <textarea name="description" id="description" cols="30" rows="10"></textarea><br><br>
-
-            <label for="isFavorite">Mark this as a favorite: </label>
-            <input type="checkbox" name="isFavorite" id="isFavorite"><br>
-
-            <label for="tryLater">Mark to try later?</label>
-            <input type="checkbox" name="tryLater" id="tryLater"><br><br>
-
-            <label for="img">Got an image link?</label><br>
-            <input type="text" name="img" id="img"><br><br>
-
-            <label for="rating">Rate your recipe!</label><br>
-            <input type="number" name="rating" id="rating" placeholder="out of 10"><br><br>
-
-            <label for="ingredients">List your ingredients</label><br>
-            <textarea name="ingredients" id="ingredients" cols="30" rows="10"
-                placeholder="separate items with periods. e.g. 2 eggs. 1/2 C Sugar. etc..."></textarea><br><br>
-
-            <label for="instructions">List your instructions.</label><br>
-            <textarea name="instructions" id="instructions" cols="30" rows="10"
-                placeholder="separate steps with periods. e.g. mix together in a large bowl. in a separate container, combine wet ingredients. etc..."></textarea><br><br>
-
-            <label for="notes">Any additional notes to add?</label><br>
-            <textarea name="notes" id="notes" cols="30" rows="10"
-                placeholder="separate steps with periods."></textarea><br><br>
-
-            <input type="submit" value="Add New Recipe!">
-        </form>
-    </main>
+    <div class="container">
+        <header>
+            <nav class="row lime">
+                <%- include("../partials/nav.ejs") %>
+            </nav>
+            <div class="row center-align">
+                <h1 class="grey-text text-darken-2">New Recipe Form</h1>
+            </div>
+        </header>
+        <div class="divider"></div><br><br>
+        <main>
+            <div class="row">
+                <form class="col s12" action="/recipes" method="POST">
+                    <!-- TITLE AND TAGS -->
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <label for="title">Recipe Title: </label>
+                            <input type="text" name="title" id="title">
+                        </div>
+                        <div class="input-field col s6">
+                            <label for="tags">Use tags to sort this recipe</label>
+                            <input type="text" name="tags" id="tags" placeholder="use , to separate tags">
+                        </div>
+                    </div>
+                    <!-- DESCRIPTION AND IMG LINK -->
+                    <div class="row">
+                        <div class="col s12 m8">
+                            <div class="input-field">
+                                <label for="description"></label>
+                                <textarea class="materialize-textarea" name="description" id="description"
+                                    placeholder="Give a description for your recipe!"></textarea>
+                            </div>
+                            <div class="input-field">
+                                <label for="img">Got an image link?</label>
+                                <input type="text" name="img" id="img">
+                            </div>
+                        </div>
+                        <!-- RATE & ADD TO FAVORITES/TRY LATER -->
+                        <div class="col s12 m4">
+                            <div class="card">
+                                <div class="card-content">
+                                    <p class="card-title grey-text text-darken-2">Add to lists:</p>
+                                    <label>
+                                        <input type="checkbox" name="isFavorite">
+                                        <span class="grey-text text-darken-2"> Mark this as a favorite: </span>
+                                    </label>
+                                    <label for="tryLater">
+                                        <input type="checkbox" name="tryLater">
+                                        <span class="grey-text text-darken-2"> Mark to try later?</span>
+                                    </label>
+                                    <label for="rating">
+                                        <input type="number" name="rating" id="rating" placeholder="out of 10">
+                                        <span class="grey-text text-darken-2">Rate your recipe!</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <!-- INGREDIENTS -->
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <label for="ingredients">List your ingredients</label>
+                                <textarea class="materialize-textarea" name="ingredients" id="ingredients" cols="30" rows="10"
+                                placeholder="separate ingredients with periods."></textarea>
+                            </div>
+                        </div>
+                        <!-- INSTRUCTIONS -->
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <label for="instructions">List your instructions.</label>
+                                <textarea class="materialize-textarea" name="instructions" id="instructions" cols="30" rows="10"
+                                placeholder="separate steps with periods."></textarea>
+                            </div>
+                        </div>
+                        <!-- ADDITIONAL NOTES -->
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <label for="notes">Any additional notes to add?</label>
+                                <textarea class="materialize-textarea" name="notes" id="notes" cols="30" rows="10"
+                                placeholder="separate notes with periods."></textarea>
+                            </div>
+                        </div>
+                        <!-- SUBMIT -->
+                        <button class="btn large lime" type="submit"><i class="material-icons left">local_dining</i> Add New Recipe!</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
 </body>
 
 </html>

@@ -11,7 +11,10 @@
             <nav class="row lime">
                 <%- include("../partials/nav.ejs") %>
             </nav>
-            <h1>All Recipes</h1>
+            <div class="row center-align">
+                <h1 class="grey-text text-darken-2">Every Recipe</h1>
+                <h5 class="grey-text text-darken-2">All in one place</h5>
+            </div>
             <div class="divider"></div>
         </header>
         <main>
@@ -21,16 +24,18 @@
             <div class="section row">
                 <% for (i=0; i<allRecipes.length; i++){%>
                     <div class="col s12 m6 l4 center-align">
-                        <div class="card z-depth-2 hoverable">
-                            <div class="card-image">
-                                <img src="<%=allRecipes[i].img%>" alt="<%= allRecipes[i].title %> ">
+                        <a class="white-text" href="/recipes/<%=allRecipes[i]._id%>">
+                            <div class="card z-depth-2 hoverable">
+                                <div class="card-image">
+                                    <img src="<%=allRecipes[i].img%>" alt="<%= allRecipes[i].title %> ">
+                                </div>
+                                <div class="card-action orange accent-2">
+                                    <h5>
+                                        <%=allRecipes[i].title%>
+                                    </h5>
+                                </div>
                             </div>
-                            <div class="card-action orange accent-2">
-                                <a class="white-text" href="/recipes/<%=allRecipes[i]._id%>">
-                                    <%=allRecipes[i].title%>
-                                </a>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                     <% } %>
             </div>

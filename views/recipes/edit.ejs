@@ -1,49 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include("../partials/head.ejs") %>
 </head>
+
 <body>
-    <header>
-        <nav>
-            <%- include("../partials/nav.ejs") %>
-        </nav>
-        <h1>Edit <%= editRecipe.title %> </h1>
-    </header>
-    <main>
-        <form action="/recipes/<%=editRecipe._id%>?_method=PUT" method="POST">
-            <label for="title">Recipe Title: </label><br>
-            <input type="text" name="title" id="title" value="<%=editRecipe.title%>"><br><br>
-
-            <label for="tags">Edit tags:</label><br>
-            <input type="text" name="tags" id="tags" placeholder="use , to separate tags" value="<%=editRecipe.tags.join(", ")%>"><br><br>
-
-            <label for="description">Give a description for your recipe: </label><br>
-            <textarea name="description" id="description" cols="30" rows="10"><%=editRecipe.description%></textarea><br><br>
-
-            <label for="isFavorite">Mark this as a favorite: </label>
-            <input type="checkbox" name="isFavorite" id="isFavorite"><br>
-
-            <label for="tryLater">Mark to try later?</label>
-            <input type="checkbox" name="tryLater" id="tryLater"><br><br>
-
-            <label for="img">Update image link:</label><br>
-            <input type="text" name="img" id="img" value="<%=editRecipe.img%>"><br><br>
-
-            <label for="rating">Update your rating:</label><br>
-            <input type="number" name="rating" id="rating" placeholder="out of 10" value="<%=editRecipe.rating%>"><br><br>
-
-            <label for="ingredients">Update ingredients:</label><br>
-            <textarea name="ingredients" id="ingredients" cols="30" rows="10" placeholder="separate items with periods. e.g. 2 eggs. 1/2 C Sugar. etc..."><%=editRecipe.ingredients.join(". ")%></textarea><br><br>
-
-            <label for="instructions">Update instructions:</label><br>
-            <textarea name="instructions" id="instructions" cols="30" rows="10" placeholder="separate steps with periods. e.g. mix together in a large bowl. in a separate container, combine wet ingredients. etc..."><%=editRecipe.instructions.join(". ")%></textarea><br><br>
-
-            <label for="notes">Any additional notes to add?</label><br>
-            <textarea name="notes" id="notes" cols="30" rows="10" placeholder="separate steps with periods."><%=editRecipe.notes.join(". ")%></textarea><br><br>
-
-            <input type="submit" value="Update Recipe!">
-        </form>
-    </main>
+    <div class="container">
+        <header>
+            <nav class="lime row">
+                <%- include("../partials/nav.ejs") %>
+            </nav>
+            <div class="row center-align">
+                <h1 class="grey-text text-darken-2">Edit <%= editRecipe.title %>
+                </h1>
+            </div>
+        </header>
+        <div class="divider"></div><br><br>
+        <main>
+            <div class="row">
+                <form class="col s12" action="/recipes/<%=editRecipe._id%>?_method=PUT" method="POST">
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <label for="title">Recipe Title: </label>
+                            <input type="text" name="title" id="title" value="<%=editRecipe.title%>"><br><br>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <label for="tags">Edit tags:</label>
+                            <input type="text" name="tags" id="tags" placeholder="use , to separate tags"
+                                value="<%=editRecipe.tags.join(" , ")%>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- DESCRIPTION -->
+                        <div class="col s12 m8 l8">
+                            <div class="input-field">
+                                <label for="description">Edit description</label>
+                                    <textarea class="materialize-textarea" name="description" id="description" cols="30"
+                                        rows="10"><%=editRecipe.description%>
+                                    </textarea>
+                            </div>
+                            <!-- IMAGE LINK -->
+                            <div class="input-field">
+                                <label for="img">Update image link:</label>
+                                <input type="text" name="img" id="img" value="<%=editRecipe.img%>">
+                            </div>
+                        </div>
+                        <div class="col s12 m4 l4">
+                            <!-- RATE & ADD TO FAVORITES/TRY LATER -->
+                            <div class="card">
+                                <div class="card-content">
+                                    <p class="card-title">Add to lists:</p>
+                                    <label for="isFavorite">
+                                        <input type="checkbox" name="isFavorite" id="isFavorite">
+                                        <span>Mark this as a favorite:</span>
+                                    </label>
+                                    <label for="tryLater">
+                                        <input type="checkbox" name="tryLater" id="tryLater">
+                                        <span>Mark to try later?</span>
+                                    </label>
+                                    <label for="rating">
+                                        <input type="number" name="rating" id="rating" placeholder="out of 10"
+                                        value="<%=editRecipe.rating%>">
+                                        <span>Update your rating:</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <div class="row">
+                            <div class="col s12">
+                                <label for="ingredients">Update ingredients:</label><br>
+                                <textarea class="materialize-textarea" name="ingredients" id="ingredients" cols="30" rows="10"
+                                    placeholder="separate items with periods."><%=editRecipe.ingredients.join(". \r\n")%>
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <label for="instructions">Update instructions:</label>
+                                <textarea class="materialize-textarea" name="instructions" id="instructions" cols="30" rows="10"
+                                    placeholder="separate steps with periods."><%=editRecipe.instructions.join(". \r\n")%>
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <label for="notes">Any additional notes to add?</label>
+                                <textarea class="materialize-textarea" name="notes" id="notes" cols="30" rows="10"
+                                    placeholder="separate notes with periods."><%=editRecipe.notes.join(". \r\n")%></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s3">
+                            <button class="btn lime hoverable" type="submit">Update Recipe!</button>
+                        </div>
+                        <div class="col s3">
+                            <a class="btn orange hoverable" href="/recipes/<%=editRecipe._id%>">Cancel Edits</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
 </body>
+
 </html>

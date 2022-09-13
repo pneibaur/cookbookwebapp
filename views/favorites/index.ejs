@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include("../partials/head.ejs") %>
 </head>
+
 <body>
-    <nav>
-        <%- include("../partials/nav.ejs") %>
-    </nav>
-    <h1>Favorite Recipes Index Page</h1>
-    <main>
-        <a href="/recipes/new">Add a new recipe</a>
-        <ul>
-            <% for (i=0; i<favorites.length; i++){%>
-                <li><a href="/recipes/<%=favorites[i]._id%>"> <%=favorites[i].title%> </a></li>
-            <% } %> 
-        </ul>
-    </main>
+    <div class="container">
+        <header>
+            <nav class="lime row">
+                <%- include("../partials/nav.ejs") %>
+            </nav>
+            <div class="row center-align">
+                <h1 class="grey-text text-darken-2">Favorite Recipes</h1>
+                <h5 class="grey-text text-darken-2">Make something memorable!</h5>
+            </div>
+        </header>
+        <div class="divider"></div><br><br>
+        <main>
+            <div class="section">
+                <a class="btn lime hoverable" href="/recipes/new">Add a new recipe</a>
+            </div>
+            <div class="section row">
+                <% for (i=0; i<favorites.length; i++){%>
+                    <div class="col s12 m6 l4 center-align">
+                        <a class="white-text" href="/recipes/<%=favorites[i]._id%>">
+                            <div class="card z-depth-2 hoverable">
+                                <div class="card-image">
+                                    <img src="<%=favorites[i].img%>" alt="<%=favorites[i].title%>">
+                                </div>
+                                <div class="card-action orange accent-2">
+                                    <h5><%=favorites[i].title%></h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <% } %>
+            </div>
+        </main>
+    </div>
 </body>
+
 </html>

@@ -50,7 +50,6 @@ recipeRouter.put("/:id", (req, res)=>{
             // sorts currentRecipe.notes
             if (currentRecipe.notes[0] === '') {currentRecipe.notes = []}
             else {currentRecipe.notes = currentRecipe.notes[0].split(".")}
-            console.log(`UPDATE: ${currentRecipe}`)
             currentRecipe.save()
         res.redirect(`/recipes/${req.params.id}`)
     })
@@ -80,7 +79,6 @@ recipeRouter.post("/", (req, res)=>{
     if (req.body.tryLater === "on"){req.body.tryLater = true}
     else {req.body.tryLater = false}
     Recipes.create(req.body, (error, newRecipe)=>{
-        console.log(newRecipe)
         // sorts newRecipe.tags
         if (newRecipe.tags[0] === '') {newRecipe.tags = []} 
         else {newRecipe.tags = newRecipe.tags[0].split(", ")} // this is the logic to convert an array into multiple arrays. or if it's empty, then it's an empty array. 
