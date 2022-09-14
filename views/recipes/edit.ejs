@@ -28,7 +28,7 @@
                         <div class="input-field col s12 m6 l6">
                             <label for="tags">Edit tags:</label>
                             <input type="text" name="tags" id="tags" placeholder="use , to separate tags"
-                                value="<%=editRecipe.tags.join(" , ")%>">
+                                value="<%=editRecipe.tags.join(", ")%>">
                         </div>
                     </div>
                     <div class="row">
@@ -79,7 +79,7 @@
                             <div class="col s12">
                                 <label for="ingredients">Update ingredients:</label><br>
                                 <textarea class="materialize-textarea" name="ingredients" id="ingredients" cols="30" rows="10"
-                                    placeholder="separate items with periods."><%=editRecipe.ingredients.join(". \r\n")%>
+                                    placeholder="separate items with periods."><%=editRecipe.ingredients%>
                                 </textarea>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                             <div class="col s12">
                                 <label for="instructions">Update instructions:</label>
                                 <textarea class="materialize-textarea" name="instructions" id="instructions" cols="30" rows="10"
-                                    placeholder="separate steps with periods."><%=editRecipe.instructions.join(". \r\n")%>
+                                    placeholder="separate steps with periods."><%=editRecipe.instructions%>
                                 </textarea>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                             <div class="col s12">
                                 <label for="notes">Any additional notes to add?</label>
                                 <textarea class="materialize-textarea" name="notes" id="notes" cols="30" rows="10"
-                                    placeholder="separate notes with periods."><%=editRecipe.notes.join(". \r\n")%></textarea>
+                                    placeholder="separate notes with periods."><%=editRecipe.notes%></textarea>
                             </div>
                         </div>
                     </div>

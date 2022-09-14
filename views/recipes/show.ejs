@@ -96,18 +96,7 @@
                     <div class="card z-depth-2 yellow lighten-5">
                         <div class="card-content">
                             <h3 class="grey-text text-darken-2"> Saved Notes: </h3>
-                            <ul>
-                                <% if (showRecipe.notes.length> 0){ %>
-                                    <% showRecipe.notes.forEach(note=> { %>
-                                        <li class="grey-text text-darken-2 flow-text">
-                                            <i class="material-icons">label</i>
-                                            <%= note %>
-                                        </li><br>
-                                        <% }); %>
-                                <% } else { %>
-                                    no notes
-                                <% }%>
-                            </ul>
+                            <textarea disabled class="materialize-textarea grey-text text-darken-2"><%= showRecipe.notes%></textarea>
                         </div>
                     </div>
                 </div>
@@ -116,13 +105,7 @@
                     <div class="card z-depth-2 yellow lighten-5">
                         <div class="card-content">
                             <h3 class="grey-text text-darken-2">Ingredients: </h3>
-                            <ul>
-                                <% showRecipe.ingredients.forEach(ingredient=> { %>
-                                    <li class="grey-text text-darken-2 flow-text">
-                                        <%= ingredient %>
-                                    </li>
-                                    <% }) %>
-                            </ul>
+                            <textarea disabled class="materialize-textarea grey-text text-darken-2"><%- showRecipe.ingredients %> </textarea>
                         </div>
                     </div>
 
@@ -132,13 +115,7 @@
                     <div class="card z-depth-2 yellow lighten-5">
                         <div class="card-content">
                             <h3 class="grey-text text-darken-2">Instructions: </h3>
-                            <ol>
-                                <% showRecipe.instructions.forEach(item=> { %>
-                                    <li class="grey-text text-darken-2 flow-text">
-                                        <%= item %>
-                                    </li>
-                                    <% }) %>
-                            </ol>
+                            <textarea class="materialize-textarea grey-text text-darken-2" disabled><%= showRecipe.instructions %> </textarea>
                         </div>
                     </div>
                 </div>

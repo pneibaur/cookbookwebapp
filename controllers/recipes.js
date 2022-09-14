@@ -40,16 +40,7 @@ recipeRouter.put("/:id", (req, res)=>{
     Recipes.findByIdAndUpdate(req.params.id, req.body, {new:true}, (error, currentRecipe)=>{
             // sorts currentRecipe.tags
             if (currentRecipe.tags[0] === '') {currentRecipe.tags = []} 
-            else {currentRecipe.tags = currentRecipe.tags[0].split(",")} // this is the logic to convert an array into multiple arrays. or if it's empty, then it's an empty array. 
-            // sorts currentRecipe.ingredients
-            if (currentRecipe.ingredients[0] === '') {currentRecipe.ingredients = []}
-            else {currentRecipe.ingredients = currentRecipe.ingredients[0].split(".")}
-            // sorts currentRecipe.instructions
-            if (currentRecipe.instructions[0] === '') {currentRecipe.instructions = []}
-            else {currentRecipe.instructions = currentRecipe.instructions[0].split(".")}
-            // sorts currentRecipe.notes
-            if (currentRecipe.notes[0] === '') {currentRecipe.notes = []}
-            else {currentRecipe.notes = currentRecipe.notes[0].split(".")}
+            else {currentRecipe.tags = currentRecipe.tags[0].split(",")} 
             currentRecipe.save()
         res.redirect(`/recipes/${req.params.id}`)
     })
@@ -79,18 +70,9 @@ recipeRouter.post("/", (req, res)=>{
     if (req.body.tryLater === "on"){req.body.tryLater = true}
     else {req.body.tryLater = false}
     Recipes.create(req.body, (error, newRecipe)=>{
-        // sorts newRecipe.tags
+        // sorts newRecipe tags
         if (newRecipe.tags[0] === '') {newRecipe.tags = []} 
-        else {newRecipe.tags = newRecipe.tags[0].split(", ")} // this is the logic to convert an array into multiple arrays. or if it's empty, then it's an empty array. 
-        // sorts newRecipe.ingredients
-        if (newRecipe.ingredients[0] === '') {newRecipe.ingredients = []}
-        else {newRecipe.ingredients = newRecipe.ingredients[0].split(". ")}
-        // sorts newRecipe.instructions
-        if (newRecipe.instructions[0] === '') {newRecipe.instructions = []}
-        else {newRecipe.instructions = newRecipe.instructions[0].split(". ")}
-        // sorts newRecipe.notes
-        if (newRecipe.notes[0] === '') {newRecipe.notes = []}
-        else {newRecipe.notes = newRecipe.notes[0].split(". ")}
+        else {newRecipe.tags = newRecipe.tags[0].split(", ")}
         newRecipe.save()
         res.redirect("/recipes")
     })

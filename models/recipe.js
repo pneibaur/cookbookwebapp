@@ -10,9 +10,9 @@ const recipeSchema = new Schema({
     rating: Number,
     isFavorite: Boolean,
     tryLater: Boolean,
-    notes: Array,
-    ingredients: {type: Array},
-    instructions: {type: Array}
+    notes: String,
+    ingredients: String,
+    instructions: String
 }, {timestamps: true})
 
 const Recipe = mongoose.model("Recipe", recipeSchema)
