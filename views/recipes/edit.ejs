@@ -28,7 +28,7 @@
                         <div class="input-field col s12 m6 l6">
                             <label for="tags">Edit tags:</label>
                             <input type="text" name="tags" id="tags" placeholder="use , to separate tags"
-                                value="<%=editRecipe.tags.join(", ")%>">
+                                value="<%=editRecipe.tags.join(",")%>">
                         </div>
                     </div>
                     <div class="row">
@@ -36,9 +36,7 @@
                         <div class="col s12 m8 l8">
                             <div class="input-field">
                                 <label for="description">Edit description</label>
-                                    <textarea class="materialize-textarea" name="description" id="description" cols="30"
-                                        rows="10"><%=editRecipe.description%>
-                                    </textarea>
+                                    <textarea class="materialize-textarea" name="description" id="description"><%=editRecipe.description%></textarea>
                             </div>
                             <!-- EXTERNAL LINK -->
                             <div class="input-field">
@@ -79,16 +77,14 @@
                             <div class="col s12">
                                 <label for="ingredients">Update ingredients:</label><br>
                                 <textarea class="materialize-textarea" name="ingredients" id="ingredients" cols="30" rows="10"
-                                    placeholder="separate items with periods."><%=editRecipe.ingredients%>
-                                </textarea>
+                                    placeholder="separate items with periods."><%=editRecipe.ingredients%></textarea>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12">
                                 <label for="instructions">Update instructions:</label>
                                 <textarea class="materialize-textarea" name="instructions" id="instructions" cols="30" rows="10"
-                                    placeholder="separate steps with periods."><%=editRecipe.instructions%>
-                                </textarea>
+                                    placeholder="separate steps with periods."><%=editRecipe.instructions%></textarea>
                             </div>
                         </div>
                         <div class="row">

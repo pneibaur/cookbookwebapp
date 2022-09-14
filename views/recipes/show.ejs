@@ -14,64 +14,83 @@
         </header>
         <main>
             <!-- *add a row and some columns for this seciton -->
-            <div class="section row">
+            <div class="section">
                 <!-- RECIPE TITLE -->
-                <h1 class="col s12 grey-text text-darken-2 center-align">
+                <h1 class="row grey-text text-darken-2 center-align">
                     <%= showRecipe.title %>
                 </h1>
                 <!-- DESCRIPTION -->
-                <h5 class="col s12 grey-text text-darken-2 center-align">
+                <h5 class="row grey-text text-darken-2 center-align">
                     <%=showRecipe.description %>
                 </h5>
                 <!-- RECIPE TAGS -->
-                <h5 class="col s9 left grey-text text-darken-2">
-                    <% if (showRecipe.tags.length> 0){ %>
-                        Tags: <%= showRecipe.tags.join(", ") %> 
-                    <% } else { %>
-                        This Recipe has no tags.
-                    <% } %> 
-                    </h5>
-                <h5 class="col s3 grey-text text-darken-2">Rating: <%=showRecipe.rating%>/10 </h5>
+                <div class="row valign-wrapper">
+                    <div class="col s9 left grey-text text-darken-2">
+                        <% if (showRecipe.tags.length> 0){ %>
+                            <div class="row">
+                                <h5>Tags:</h5>
+                                <% showRecipe.tags.forEach(tag=> { %>
+                                    <div class="col s6 m3 center-align">
+                                        <div class="card-panel lime darken-1" style="border-radius: 50px; padding: 10px;">
+                                            <span class="white-text"><%=tag%></span>
+                                        </div>
+                                    </div>
+                                    <% }); %>
+                        <% } else { %>
+                            This Recipe has no tags.
+                        <% } %>
+                            </div>
+                    </div>
+                    <!-- RECIPE RATING -->
+                    <div class="row">
+                        <h5 class="col s3 grey-text text-darken-2">Rating: <%=showRecipe.rating%>/10 </h5>
+                    </div>
+                </div>
             </div>
-            <div class=" divider">
-            </div>
+            <div class="divider"></div>
             <!-- BUTTONS SECTION -->
             <div class="section">
                 <div class="row">
                     <!-- EDIT -->
                     <div class="col s6 m3 l3 input-field center-align">
-                        <a class="hoverable btn orange white-text" href="/recipes/<%=showRecipe._id%>/edit"><i
-                                class="material-icons left">edit</i> Edit</a>
+                        <a class="hoverable btn orange white-text" href="/recipes/<%=showRecipe._id%>/edit">
+                            <i class="material-icons left">edit</i> Edit</a>
                     </div>
                     <!-- DELETE -->
                     <div class="col s6 m3 l3 input-field center-align">
                         <form action="/recipes/<%=showRecipe._id%>?_method=DELETE" method="POST">
-                            <button class="hoverable orange btn" type="submit"><i
-                                    class="material-icons left">delete_forever</i> Delete</button>
+                            <button class="hoverable orange btn" type="submit">
+                                <i class="material-icons left">delete_forever</i> Delete
+                            </button>
                         </form>
                     </div>
                     <!-- ADD/REMOVE FROM FAVS -->
                     <div class="col s6 m3 l3 input-field center-align">
                         <form action="/recipes/<%=showRecipe._id%>/addFav?_method=PUT" method="POST">
                             <% if (showRecipe.isFavorite===true){ %>
-                                <button class="hoverable btn orange white-text" type="submit"><i
-                                        class="material-icons left">remove_circle</i> favorites</button>
+                                <button class="hoverable btn orange white-text" type="submit">
+                                    <i class="material-icons left">remove_circle</i> favorites
+                                </button>
                                 <% } else { %>
-                                    <button class="hoverable btn lime white-text" type="submit"><i
-                                            class="material-icons left">add_circle</i> favorites</button>
-                                    <% } %>
+                                    <button class="hoverable btn lime white-text" type="submit">
+                                        <i class="material-icons left">add_circle</i> favorites
+                                    </button>
+                                <% } %>
                         </form>
                     </div>
                     <!-- ADD/REMOVE FROM TRY LATER -->
                     <div class="col s6 m3 l3 input-field center-align">
                         <form action="/recipes/<%=showRecipe._id%>/trylater?_method=PUT" method="POST">
                             <% if (showRecipe.tryLater===true){ %>
-                                <button class="hoverable btn orange white-text" type="submit"><i
-                                        class="material-icons left">remove_circle</i> try later</button>
-                                <% } else { %>
-                                    <button class="hoverable btn lime white-text" type="submit"><i
-                                            class="material-icons left">add_circle</i> try later</button>
-                                <% } %>
+                                <button class="hoverable btn orange white-text" type="submit">
+                                    <i
+                                        class="material-icons left">remove_circle</i> try later
+                                </button>
+                            <% } else { %>
+                                <button class="hoverable btn lime white-text" type="submit">
+                                    <i class="material-icons left">add_circle</i> try later
+                                </button>
+                            <% } %>
                         </form>
                     </div>
                 </div>
@@ -87,7 +106,9 @@
                     <div class="card hoverable z-depth-2 yellow lighten-5">
                         <div class="card-content">
                             <h5 class="card-title grey-text text-darken-2">Recipe Link:</h5>
-                            <a href="<%=showRecipe.link%>"><h6><%=showRecipe.link%></h6></a>
+                            <a href="<%=showRecipe.link%>">
+                                <h6><%=showRecipe.link%></h6>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -96,7 +117,8 @@
                     <div class="card z-depth-2 yellow lighten-5">
                         <div class="card-content">
                             <h3 class="grey-text text-darken-2"> Saved Notes: </h3>
-                            <textarea disabled class="materialize-textarea grey-text text-darken-2"><%= showRecipe.notes%></textarea>
+                            <textarea disabled
+                                class="materialize-textarea grey-text text-darken-2"><%= showRecipe.notes%></textarea>
                         </div>
                     </div>
                 </div>
@@ -105,7 +127,8 @@
                     <div class="card z-depth-2 yellow lighten-5">
                         <div class="card-content">
                             <h3 class="grey-text text-darken-2">Ingredients: </h3>
-                            <textarea disabled class="materialize-textarea grey-text text-darken-2"><%- showRecipe.ingredients %> </textarea>
+                            <textarea disabled
+                                class="materialize-textarea grey-text text-darken-2"><%- showRecipe.ingredients %> </textarea>
                         </div>
                     </div>
 
@@ -115,7 +138,8 @@
                     <div class="card z-depth-2 yellow lighten-5">
                         <div class="card-content">
                             <h3 class="grey-text text-darken-2">Instructions: </h3>
-                            <textarea class="materialize-textarea grey-text text-darken-2" disabled><%= showRecipe.instructions %> </textarea>
+                            <textarea class="materialize-textarea grey-text text-darken-2"
+                                disabled><%=showRecipe.instructions%></textarea>
                         </div>
                     </div>
                 </div>
@@ -124,10 +148,8 @@
         <!-- CREATED/EDITED FOOTER -->
         <footer class="lime darken-1 page-footer valign-wrapper">
             <div class="row center-align">
-                <p class="col s6">CREATED: <%= showRecipe.createdAt %>
-                </p>
-                <p class="col s6">EDITED: <%= showRecipe.updatedAt %>
-                </p>
+                <p class="col s6">CREATED: <%= showRecipe.createdAt %></p>
+                <p class="col s6">EDITED: <%= showRecipe.updatedAt %></p>
             </div>
         </footer>
     </div>
