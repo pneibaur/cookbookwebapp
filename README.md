@@ -47,3 +47,13 @@ https://cookbookwebapp.herokuapp.com/
 - Users can upload their own photos of their finished work!
 - Users can filter recipes by ingredient. 
 - Users can share their saved recipes to other social media apps they have. 
+
+---
+
+## Original Wireframes
+Below are the wireframes used to plan the web app: 
+![screenshot](public/images/Cookbook_App_Index_Page.png)
+![screenshot](public/images/Cookbook_App_Show_Page.png)
+![screenshot](public/images/Cookbook_App_Edit_Page.png)
+![screenshot](public/images/Cookbook_App_New_Page.png)
+![screenshot](public/images/CookBook_App_ERD.png)
