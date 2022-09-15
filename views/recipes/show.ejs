@@ -24,9 +24,10 @@
                     <%=showRecipe.description %>
                 </h5>
                 <!-- RECIPE TAGS -->
-                <div class="row valign-wrapper">
-                    <div class="col s9 left grey-text text-darken-2">
-                        <% if (showRecipe.tags.length> 0){ %>
+                <div class="row">
+                    <!-- if tags exist, then populate. -->
+                    <% if (showRecipe.tags.length> 0){ %>
+                        <div class="col s12 m8 left grey-text text-darken-2">
                             <div class="row">
                                 <h5>Tags:</h5>
                                 <% showRecipe.tags.forEach(tag=> { %>
@@ -35,15 +36,50 @@
                                             <span class="white-text"><%=tag%></span>
                                         </div>
                                     </div>
-                                    <% }); %>
-                        <% } else { %>
-                            This Recipe has no tags.
-                        <% } %>
+                                <% }); %>
                             </div>
-                    </div>
+                        </div>
+                        <!-- if no tags, then placeholder -->
+                        <% } else { %>
+                            <div class="col s12 m4 left">
+                                <h5 class="grey-text text-darken-2"> This Recipe has no tags...yet.</h5>
+                            </div>
+                        <% } %>
                     <!-- RECIPE RATING -->
-                    <div class="row">
-                        <h5 class="col s3 grey-text text-darken-2">Rating: <%=showRecipe.rating%>/10 </h5>
+                    <!-- if a rating exists, show rating and option to update.  -->
+                    <div class="col s12 m4">
+                        <div class="card yellow lighten-5">
+                            <% if (showRecipe.rating) { %>
+                                <div class="card-content">
+                                    <span class="activator card-title grey-text text-darken-2">Rating:<i class="material-icons right">more_vert</i></span>
+                                    <h5 class="grey-text text-darken-2"><%=showRecipe.rating%>/10</h5>
+                                    <p class="grey-text text-darken-2">click to update me</p>
+                                </div>
+                                <div class="card-reveal yellow lighten-5">
+                                    <span class="flow-text activator card-title grey-text text-darken-2">New rating<i class="material-icons right">close</i></span>
+                                    <br>
+                                    <form action="/recipes/<%=showRecipe._id%>/rate?_method=PUT" method="POST">
+                                        <div class="row">
+                                            <div class="col s5">
+                                                <input type="text" name="rating" placeholder="Number">
+                                            </div>
+                                            <div class="col s7">
+                                                <button type="submit" class="btn-small lime white-text"><i class="material-icons left">send</i>save</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            <!-- if rating doesn't exist, give option to update with out the edit page.  -->
+                            <% } else { %>
+                                <div class="card-content">
+                                    <span class="card-title grey-text text-darken-2">No rating available</span>
+                                    <form action="/recipes/<%=showRecipe._id%>/rate?_method=PUT" method="POST">
+                                        <input type="text" name="rating" placeholder="Rate this recipe!">
+                                        <button type="submit" class="btn lime white-text"><i class="material-icons left">send</i></button>
+                                    </form>
+                                </div>
+                            <% } %>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,7 +136,11 @@
             <div class="section row">
                 <!-- RESPONSIVE IMAGE -->
                 <div class="col s12">
-                    <img class="col s12 responsive-img" src=" <%=showRecipe.img%>" alt="<%= showRecipe.title %>">
+                    <% if (showRecipe.img){%>
+                        <img class="col s12 responsive-img" src="<%=showRecipe.img%>" alt="<%=showRecipe.title%>">
+                    <%} else { %>
+                        <h5 class="col s12 center-align grey-text text-darken-2">This recipe has no image...yet.</h5>
+                    <% } %>
                 </div>
                 <div class="col s12">
                     <div class="card hoverable z-depth-2 yellow lighten-5">

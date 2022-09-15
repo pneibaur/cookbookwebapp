@@ -27,7 +27,10 @@
                         <a class="white-text" href="/recipes/<%=allRecipes[i]._id%>">
                             <div class="card z-depth-2 hoverable">
                                 <div class="card-image">
-                                    <img src="<%=allRecipes[i].img%>" alt="<%= allRecipes[i].title %> ">
+                                    <img src=" <% if (allRecipes[i].img){%><%=allRecipes[i].img%>
+                                        <%} else { %>
+                                            <%="https://i.imgur.com/xzZK1Unb.jpg"%> 
+                                        <% } %>" alt="<%=allRecipes[i].title%>">
                                 </div>
                                 <div class="card-action orange accent-2">
                                     <h5>

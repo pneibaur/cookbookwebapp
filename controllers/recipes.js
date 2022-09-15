@@ -3,13 +3,13 @@ const recipeRouter = express.Router();
 const Recipes = require("../models/recipe.js");
 
 //////////// ROUTES
-const seedData = require("../models/seedData.js");
-recipeRouter.get("/seed", (req, res)=>{
-    Recipes.deleteMany({}, (error, allRecipes)=>{})
-    Recipes.create(seedData, (error, data) =>{
-        res.redirect("/recipes")
-    })
-})
+// const seedData = require("../models/seedData.js");
+// recipeRouter.get("/seed", (req, res)=>{
+//     Recipes.deleteMany({}, (error, allRecipes)=>{})
+//     Recipes.create(seedData, (error, data) =>{
+//         res.redirect("/recipes")
+//     })
+// })
 // Index
 recipeRouter.get("/", (req, res)=>{
     Recipes.find({}, (error, foundRecipes)=>{
@@ -59,6 +59,14 @@ recipeRouter.put("/:id/trylater", (req, res)=>{
     Recipes.findByIdAndUpdate(req.params.id, req.body, {new:true}, (error, currentRecipe)=>{
         if (currentRecipe.tryLater === true){currentRecipe.tryLater = false}
         else {currentRecipe.tryLater = true}
+        currentRecipe.save()
+        res.redirect(`/recipes/${req.params.id}`)
+    })
+})
+// Update Rating from Show.ejs
+recipeRouter.put("/:id/rate", (req, res) =>{
+    Recipes.findByIdAndUpdate(req.params.id, req.body, {new:true}, (error, currentRecipe) =>{
+        currentRecipe.rating = req.body.rating
         currentRecipe.save()
         res.redirect(`/recipes/${req.params.id}`)
     })
