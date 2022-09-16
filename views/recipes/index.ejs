@@ -7,6 +7,7 @@
 
 <body class="yellow lighten-5">
     <div class="container">
+        <!-- MAIN INDEX TITLE -->
         <header>
             <nav class="row lime">
                 <%- include("../partials/nav.ejs") %>
@@ -19,7 +20,21 @@
         </header>
         <main>
             <div class="section">
-                <a class="btn hoverable lime" href="/recipes/new"><i class="material-icons left">local_dining</i>Add new</a>
+                <div class="row">
+                    <div class="col s12 m4">
+                        <a class="btn hoverable lime" href="/recipes/new"><i class="material-icons left">local_dining</i>Add new</a>
+                    </div>
+                    <div class="col s12 m8">
+                        <form class="row" action="" method="POST">
+                            <div class="field-input col s8">
+                                <input required type="search" name="" placeholder="Search tags/titles">
+                            </div>
+                            <div class="field-input col s4">
+                                <button type="submit" class="btn-small lime white-text"><i class="material-icons left">search</i>Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
             <div class="section row">
                 <% for (i=0; i<allRecipes.length; i++){%>
@@ -40,7 +55,7 @@
                             </div>
                         </a>
                     </div>
-                    <% } %>
+                <% } %>
             </div>
         </main>
     </div>
