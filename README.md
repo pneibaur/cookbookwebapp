@@ -9,13 +9,13 @@
 Food is life. You (preferrably) need it daily, and multiple times a day! Meal prepping is an essential skill, and building a recipe library is vital for those who cook frequently. "Variety is the spice of life" as they say, and trying new recipes comes with the territory. As your recipe library builds, it gets difficult to remember them all, and how to store them! 
 ### **Thats where CookBook App comes in.** 
 CookBook App is a recipe database and viewer just for you. 
-![screenshot](public/images/CookBook-App-Welcome-Page.png)
+![screenshot](/public/images/main-index.png)
 
 It keeps your recipes you choose. You can enter one in yourself. 
-![screenshot](public/images/new-recipe.png)
+![screenshot](/public/images/new-recipe-form.png)
 
 You can store links to other recipe websites you find. You can tag your recipes and search those tags for later. You can even flag recipes under "favorites" or "try later". 
-![screenshot](public/images/recipe-viewer.png)
+![screenshot](/public/images/show-pie.png)
 
 This responsive web app is perfect whether you're on a computer, or cooking with your phone or tablet. Save what you love, try something new, and make something memorable!
 
