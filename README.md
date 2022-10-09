@@ -39,6 +39,8 @@ https://cookbookwebapp.herokuapp.com/
 - Materialize CSS
 - HTML
 - JavaScript
+- Backend hosted on Heroku
+- Frontend hosted on Netlify
 
 ---
 

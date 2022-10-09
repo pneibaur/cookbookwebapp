@@ -9,6 +9,7 @@ const MONGODB_URI = process.env.MONGODB_URI
 const recipeController = require("./controllers/recipes.js")
 const favController = require("./controllers/favorites.js")
 const laterController = require("./controllers/trylater.js")
+const authRouter = require("./routes/auth.js")
 
 // Database config
 mongoose.connect(MONGODB_URI)
@@ -24,11 +25,17 @@ app.use(express.urlencoded({extended:false})) // extended:false - doesn't allow 
 app.use(express.json()) // middleware that only parces JSON
 app.use(methodOverride("_method")) // allows POST, PUT, and DELETE from a form.
 app.use(express.static("public")) // use public folder for static assets
+app.use((req, res, next)=>{
+    const user = firebase.auth().currentUser
+    res.locals.currentUser = user
+    next()
+})
 
 // controllers
 app.use("/recipes", recipeController)
 app.use("/favorites", favController)
 app.use("/trylater", laterController)
+app.use("/", authRouter)
 
 ////////// ROUTES
 /////////////////////////
